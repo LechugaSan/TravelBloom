@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navbar Styles */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 0.5rem;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            padding: 0.7rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #2980b9;
+        }
+
+        .reset-btn {
+            padding: 0.7rem 1.5rem;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Home Page Styles */
+        .home-page {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=600&fit=crop') center/cover no-repeat;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .home-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .home-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .home-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .booking-btn {
+            padding: 1rem 2.5rem;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .booking-btn:hover {
+            background-color: #229954;
+            transform: scale(1.05);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* About Page Styles */
+        .about-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .about-page h2,
+        .contact-page h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .about-content {
+            background-color: #ecf0f1;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .team-section {
+            margin-top: 2rem;
+        }
+
+        .team-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .team-member p {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        /* Contact Page Styles */
+        .contact-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .contact-form {
+            background-color: #ecf0f1;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group button {
+            padding: 0.8rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Results Section */
+        .results-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .results-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .result-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 0.5s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-images-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .result-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .result-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .result-card-content {
+            padding: 1.5rem;
+        }
+
+        .result-card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .result-card-content p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .result-card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        /* Introduction Section */
+        .introduction-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 2rem;
+            color: white;
+        }
+
+        .intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .introduction-section h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .intro-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .intro-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .intro-feature {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .intro-feature:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .intro-feature h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+        }
+
+        .intro-feature p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Featured Sections */
+        .featured-sections {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .featured-section {
+            margin-bottom: 4rem;
+        }
+
+        .featured-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .featured-header h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-header p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .featured-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .featured-card-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.3rem;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .featured-card-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-card:hover .featured-card-images img {
+            transform: scale(1.1);
+        }
+
+        .featured-card-content {
+            padding: 1.5rem;
+        }
+
+        .featured-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .featured-card p {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .featured-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-bar {
+                max-width: 100%;
+                flex-direction: column;
+            }
+
+            .home-content h1 {
+                font-size: 2rem;
+            }
+
+            .home-content p {
+                font-size: 1rem;
+            }
+
+            .results-container {
+                grid-template-columns: 1fr;
+            }
+
+            .introduction-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .intro-subtitle {
+                font-size: 1rem;
+            }
+
+            .intro-features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .intro-feature {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="navbar-container">
+            <a href="#" class="logo">✈️ Travel Recommendation</a>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')">Inicio</a></li>
+                <li><a onclick="showPage('about')">Acerca de Nosotros</a></li>
+                <li><a onclick="showPage('contact')">Contáctanos</a></li>
+            </ul>
+            <div class="search-bar">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Buscar destinos (playas, templos, países)..."
+                    onkeypress="handleSearchKeypress(event)"
+                >
+                <button onclick="searchDestinations()">Buscar</button>
+                <button class="reset-btn" onclick="resetSearch()">Restablecer</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page-section active">
+        <div class="home-page">
+            <div class="home-content">
+                <h1>Explora el Mundo</h1>
+                <p>Descubre destinos increíbles, templos antiguos y playas paradisíacas alrededor del mundo</p>
+                <button class="booking-btn" onclick="showPage('results')">Reservar Ahora</button>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" title="Facebook">f</a>
+                    <a href="https://twitter.com" target="_blank" title="Twitter">𝕏</a>
+                    <a href="https://instagram.com" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com" target="_blank" title="YouTube">▶️</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Introduction Section -->
+        <div class="introduction-section">
+            <div class="intro-container">
+                <h2>Bienvenido a Tu Plataforma de Recomendaciones de Viajes</h2>
+                <p class="intro-subtitle">Descubre el mundo con facilidad y confianza</p>
+                
+                <div class="intro-features">
+                    <div class="intro-feature">
+                        <div class="feature-icon">🗺️</div>
+                        <h3>Navegación Intuitiva</h3>
+                        <p>Barra de navegación con enlaces a Inicio, Acerca de Nosotros y Contáctanos para una experiencia sin fricciones</p>
+                    </div>
+                    
+                    <div class="intro-feature">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Búsqueda Avanzada</h3>
+                        <p>Barra de búsqueda inteligente que permite buscar destinos por palabras clave, playas, templos y países</p>
+                    </div>
+                    
+                    <div class="intro-feature">
+                        <div class="feature-icon">🖼️</div>
+                        <h3>Contenido Visual</h3>
+                        <p>Imágenes cautivadoras con descripción de fondo para cada destino, fomentando la exploración cultural</p>
+                    </div>
+                    
+                    <div class="intro-feature">
+                        <div class="feature-icon">📱</div>
+                        <h3>Funcionalidades Dinámicas</h3>
+                        <p>Recomendaciones interactivas con presentación dinámica de resultados basada en búsquedas en tiempo real</p>
+                    </div>
+                    
+                    <div class="intro-feature">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Redes Sociales</h3>
+                        <p>Conecta con nosotros a través de Facebook, Twitter, Instagram y YouTube para historias y actualizaciones</p>
+                    </div>
+                    
+                    <div class="intro-feature">
+                        <div class="feature-icon">✈️</div>
+                        <h3>Reserva Fácil</h3>
+                        <p>Botón "Reservar Ahora" para explorar destinos recomendados y planificar tu próximo viaje memorables</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secciones destacadas -->
+        <div class="featured-sections">
+            <!-- Sección de Playas -->
+            <div class="featured-section">
+                <div class="featured-header">
+                    <h2>🏖️ Playas Paradisíacas</h2>
+                    <p>Descubre las playas más hermosas del mundo</p>
+                </div>
+                <div id="beachShowcase" class="featured-grid"></div>
+            </div>
+
+            <!-- Sección de Templos -->
+            <div class="featured-section">
+                <div class="featured-header">
+                    <h2>🏯 Templos Históricos</h2>
+                    <p>Explora arquitectura y espiritualidad en templos antiguos</p>
+                </div>
+                <div id="templeShowcase" class="featured-grid"></div>
+            </div>
+
+            <!-- Sección de Países -->
+            <div class="featured-section">
+                <div class="featured-header">
+                    <h2>🌏 Ciudades del Mundo</h2>
+                    <p>Viaja a las ciudades más fascinantes del planeta</p>
+                </div>
+                <div id="countryShowcase" class="featured-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page-section">
+        <div class="about-page">
+            <h2>Acerca de Nosotros</h2>
+            <div class="about-content">
+                <p>En Travel Recommendation, nos apasiona ayudarte a descubrir los lugares más hermosos del mundo. Desde playas exóticas hasta templos históricos, nuestro equipo trabaja incansablemente para proporcionarte las mejores recomendaciones de viaje.</p>
+                <p>Nuestra misión es inspirar a los viajeros a explorar nuevas culturas, experimentar diferentes tradiciones y crear recuerdos inolvidables. Creemos que viajar es una de las mejores formas de crecer como persona y ampliar tus horizontes.</p>
+            </div>
+
+            <div class="team-section">
+                <h3>Nuestro Equipo</h3>
+                <div class="team-members">
+                    <div class="team-member">
+                        <h4>María García</h4>
+                        <p>Directora de Viajes</p>
+                    </div>
+                    <div class="team-member">
+                        <h4>Juan López</h4>
+                        <p>Especialista en Destinos</p>
+                    </div>
+                    <div class="team-member">
+                        <h4>Ana Martínez</h4>
+                        <p>Editora de Contenido</p>
+                    </div>
+                    <div class="team-member">
+                        <h4>Carlos Rodríguez</h4>
+                        <p>Gestor de Reservas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <div class="contact-page">
+            <h2>Contáctanos</h2>
+            <form class="contact-form" onsubmit="submitContact(event)">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Results Page -->
+    <div id="results" class="page-section">
+        <div class="results-section">
+            <h2 id="resultsTitle">Recomendaciones de Viaje</h2>
+            <div id="resultsContainer" class="results-container"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Travel Recommendation Platform. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="travel_recommendation.js"></script>
+</body>
+</html>

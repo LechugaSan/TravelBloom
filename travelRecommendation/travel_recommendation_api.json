@@ -1,0 +1,114 @@
+{
+  "destinations": [
+    {
+      "id": 1,
+      "name": "Maldivas",
+      "country": "Maldivas",
+      "description": "Las Maldivas son un paraíso tropical con playas de arena blanca y aguas cristalinas. Perfecto para relajarse y disfrutar de la naturaleza.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%234dd4ac'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EMaldivas - Playa 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%2345b7b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EMaldivas - Playa 2%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "beach"
+    },
+    {
+      "id": 2,
+      "name": "Playa de Bora Bora",
+      "country": "Polinesia Francesa",
+      "description": "Bora Bora es famosa por sus lagunas turquesas y sus resorts de lujo sobre el agua. Un destino definitivo para los amantes de las playas.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%2340d5f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EBora Bora - Laguna 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%2345d9f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EBora Bora - Laguna 2%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "beach"
+    },
+    {
+      "id": 3,
+      "name": "Playa de Cancún",
+      "country": "México",
+      "description": "Cancún ofrece hermosas playas de arena blanca, aguas turquesas y resorts de clase mundial. Ideal para unas vacaciones de playa.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%237ed4d4'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3ECancún - Playa 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%2390dcd4'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3ECancún - Playa 2%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "beach"
+    },
+    {
+      "id": 4,
+      "name": "Templo de Angkor Wat",
+      "country": "Camboya",
+      "description": "Angkor Wat es el templo más grande del mundo y un patrimonio de la humanidad. Famoso por su arquitectura y belleza histórica.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%238b7355'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EAngkor Wat - Vista 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%239d8b7e'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EAngkor Wat - Vista 2%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "temple"
+    },
+    {
+      "id": 5,
+      "name": "Templo del Taj Mahal",
+      "country": "India",
+      "description": "El Taj Mahal es un monumento a la eternidad del amor. Su arquitectura blanca es espectacular y debe ser visitado por todos.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23f5f5f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23333'%3ETaj Mahal - Exterior%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23dcdcdc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23333'%3ETaj Mahal - Interior%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "temple"
+    },
+    {
+      "id": 6,
+      "name": "Templo de Kyoto",
+      "country": "Japón",
+      "description": "Los templos de Kyoto ofrecen una experiencia mística y espiritual en el corazón de la tradición japonesa. Hermosos jardines y arquitectura antigua.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23c41411'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EKyoto - Templo 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23a30e0d'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EKyoto - Templo 2%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "temple"
+    },
+    {
+      "id": 7,
+      "name": "París",
+      "country": "Francia",
+      "description": "París, la ciudad del amor, ofrece una experiencia cultural incomparable. Desde la Torre Eiffel hasta el Louvre, hay mucho que explorar.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%2388c0d8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EParis - Ciudad 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%2390c9e8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EParis - Ciudad 2%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "country"
+    },
+    {
+      "id": 8,
+      "name": "Tokio",
+      "country": "Japón",
+      "description": "Tokio es una metrópolis vibrante que combina la tradición con la modernidad. Ofrece experiencias únicas en la cultura japonesa.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23ff6b6b'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3ETokio - Metropolis 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23ff8787'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3ETokio - Metropolis 2%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "country"
+    },
+    {
+      "id": 9,
+      "name": "Nueva York",
+      "country": "Estados Unidos",
+      "description": "Nueva York es la ciudad que nunca duerme. Con sus rascacielos, museos y vida nocturna, hay algo para todos.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23364558'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3ENY - Rascacielos 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23455a64'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3ENY - Rascacielos 2%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "country"
+    },
+    {
+      "id": 10,
+      "name": "Tailandia",
+      "country": "Tailandia",
+      "description": "Tailandia ofrece playas hermosas, templos antiguos y una cultura vibrante. Perfecta para los mochileros y viajeros de lujo.",
+      "images": [
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23ffd700'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23333'%3ETailandia - Dorado 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300'%3E%3Crect id='rect' width='500' height='300' fill='%23ffed4e'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23333'%3ETailandia - Dorado 2%3C/text%3E%3C/svg%3E"
+      ],
+      "type": "country"
+    }
+  ]
+}
